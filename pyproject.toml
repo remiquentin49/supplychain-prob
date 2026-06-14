@@ -1,7 +1,6 @@
 [build-system]
-requires = []
-build-backend = "_backend"
-backend-path = ["."]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "supplychain-prob"
@@ -9,11 +8,24 @@ version = "0.1.0"
 description = "In-memory probabilistic modelling utilities for integer supply quantities."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "numpy",
+  "scipy",
+  "pandas",
+  "matplotlib",
+]
 license = {file = "LICENSE"}
 
 [project.optional-dependencies]
-dev = []
+dev = [
+  "pytest",
+  "hypothesis",
+  "ruff",
+  "mypy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.mypy]
 python_version = "3.11"
@@ -23,5 +35,6 @@ ignore_errors = true
 
 [tool.ruff]
 line-length = 100
+
 [tool.ruff.lint]
 ignore = ["E", "F"]
